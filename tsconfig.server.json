@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json", // Extiende la configuración desde tsconfig.json, reutilizando sus opciones
+  "compilerOptions": {
+    // Opciones específicas para el compilador TypeScript
+    "module": "CommonJS", // Establece el formato de módulo en CommonJS, adecuado para Node.js
+    "outDir": "dist", // Directorio de salida para los archivos compilados, 'dist' en este caso
+    "noEmit": false, // Habilita la generación de archivos JavaScript (opuesto a solo verificar errores)
+    "jsx": "react" // Maneja JSX, indicando que se transforma en llamadas a React.createElement
+  },
+  "include": ["src/server.ts", "src/payload.config.ts"] // Archivos específicos a incluir en la compilación
+}

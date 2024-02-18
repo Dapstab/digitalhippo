@@ -34,3 +34,19 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Comentarios acerca del codigo:
+
+{
+"watch": ["server.ts", "src/collections/**/*.ts", "src/trpc/index.ts"],
+// Especifica los archivos y directorios que nodemon debe monitorear para reinicios automáticos
+
+"exec": "ts-node --project tsconfig.server.json src/server.ts -- -I",
+// Comando que nodemon ejecutará al detectar cambios. Aquí, usa ts-node para ejecutar server.ts con la configuración de tsconfig.server.json
+
+"ext": "js ts",
+// Define las extensiones de archivo que nodemon observará para reiniciar. Incluye JavaScript (.js) y TypeScript (.ts)
+
+"stdin": false
+// Deshabilita la escucha en el stdin (entrada estándar). Esto previene que nodemon reinicie mediante comandos de teclado
+}
