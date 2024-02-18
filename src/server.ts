@@ -8,6 +8,7 @@ import bodyParser from "body-parser";
 import { IncomingMessage } from "http";
 import { stripeWebhookHandler } from "./webhooks";
 import nextBuild from "next/dist/build";
+import path from "path";
 
 const app = express(); // Crea una instancia de Express
 const PORT = Number(process.env.PORT) || 3000; // Define el puerto del servidor, usa variable de entorno o 3000 por defecto
