@@ -14,15 +14,10 @@ const adminsAndUser: Access = ({ req: { user } }) => {
 export const Users: CollectionConfig = {
   slug: "users",
   auth: {
-    // verify: {
-    //   generateEmailHTML: ({ token }) => {
-    //     return `<a href='${process.env.NEXT_PUBLIC_SERVER_URL}/verify-email?token=${token}'>Verify acount</a>`;
-    //   },
-    // },
     verify: {
       generateEmailHTML: ({ token }) => {
         return PrimaryActionEmailHtml({
-          actionLabel: "Verify your account",
+          actionLabel: "verify your account",
           buttonText: "Verify Account",
           href: `${process.env.NEXT_PUBLIC_SERVER_URL}/verify-email?token=${token}`,
         });
@@ -64,9 +59,7 @@ export const Users: CollectionConfig = {
       name: "role",
       defaultValue: "user",
       required: true,
-      //   admin: {
-      //     condition: ({ req }) => false,
-      //   },
+
       type: "select",
       options: [
         { label: "Admin", value: "admin" },

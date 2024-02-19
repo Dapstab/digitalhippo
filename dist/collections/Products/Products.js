@@ -72,7 +72,7 @@ var addUser = function (_a) {
 var syncUser = function (_a) {
     var req = _a.req, doc = _a.doc;
     return __awaiter(void 0, void 0, void 0, function () {
-        var fullUser, products, allIds_1, createdProductIDs, dataToUpdate;
+        var fullUser, products, allIDs_1, createdProductIDs, dataToUpdate;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0: return [4 /*yield*/, req.payload.findByID({
@@ -83,10 +83,10 @@ var syncUser = function (_a) {
                     fullUser = _b.sent();
                     if (!(fullUser && typeof fullUser === "object")) return [3 /*break*/, 3];
                     products = fullUser.products;
-                    allIds_1 = __spreadArray([], ((products === null || products === void 0 ? void 0 : products.map(function (product) {
+                    allIDs_1 = __spreadArray([], ((products === null || products === void 0 ? void 0 : products.map(function (product) {
                         return typeof product === "object" ? product.id : product;
                     })) || []), true);
-                    createdProductIDs = allIds_1.filter(function (id, index) { return allIds_1.indexOf(id) === index; });
+                    createdProductIDs = allIDs_1.filter(function (id, index) { return allIDs_1.indexOf(id) === index; });
                     dataToUpdate = __spreadArray(__spreadArray([], createdProductIDs, true), [doc.id], false);
                     return [4 /*yield*/, req.payload.update({
                             collection: "users",
@@ -197,7 +197,7 @@ exports.Products = {
         },
         {
             name: "description",
-            type: "textarea", // rich also see docs of payload
+            type: "textarea",
             label: "Product details",
         },
         {
@@ -263,7 +263,7 @@ exports.Products = {
         {
             name: "priceId",
             access: {
-                create: function () { return false; }, // Ni el user ni el admin podran cambiar esto.
+                create: function () { return false; },
                 read: function () { return false; },
                 update: function () { return false; },
             },
@@ -275,7 +275,7 @@ exports.Products = {
         {
             name: "stripeId",
             access: {
-                create: function () { return false; }, // Ni el user ni el admin podran cambiar esto.
+                create: function () { return false; },
                 read: function () { return false; },
                 update: function () { return false; },
             },

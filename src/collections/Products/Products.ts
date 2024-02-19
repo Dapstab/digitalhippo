@@ -1,9 +1,9 @@
+import {
+  AfterChangeHook,
+  BeforeChangeHook,
+} from "payload/dist/collections/config/types";
 import { PRODUCT_CATEGORIES } from "../../config";
 import { Access, CollectionConfig } from "payload/types";
-import {
-  BeforeChangeHook,
-  AfterChangeHook,
-} from "payload/dist/collections/config/types";
 import { Product, User } from "../../payload-types";
 import { stripe } from "../../lib/stripe";
 
@@ -22,14 +22,14 @@ const syncUser: AfterChangeHook<Product> = async ({ req, doc }) => {
   if (fullUser && typeof fullUser === "object") {
     const { products } = fullUser;
 
-    const allIds = [
+    const allIDs = [
       ...(products?.map((product) =>
         typeof product === "object" ? product.id : product
       ) || []),
     ];
 
-    const createdProductIDs = allIds.filter(
-      (id, index) => allIds.indexOf(id) === index
+    const createdProductIDs = allIDs.filter(
+      (id, index) => allIDs.indexOf(id) === index
     );
 
     const dataToUpdate = [...createdProductIDs, doc.id];
@@ -144,7 +144,7 @@ export const Products: CollectionConfig = {
     },
     {
       name: "description",
-      type: "textarea", // rich also see docs of payload
+      type: "textarea",
       label: "Product details",
     },
     {
@@ -198,7 +198,7 @@ export const Products: CollectionConfig = {
     {
       name: "priceId",
       access: {
-        create: () => false, // Ni el user ni el admin podran cambiar esto.
+        create: () => false,
         read: () => false,
         update: () => false,
       },
@@ -210,7 +210,7 @@ export const Products: CollectionConfig = {
     {
       name: "stripeId",
       access: {
-        create: () => false, // Ni el user ni el admin podran cambiar esto.
+        create: () => false,
         read: () => false,
         update: () => false,
       },
